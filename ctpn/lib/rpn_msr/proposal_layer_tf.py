@@ -11,6 +11,8 @@ DEBUG = False
 """
 Outputs object detection proposals by applying estimated bounding-box
 transformations to a set of regular boxes (called "anchors").
+通过应用估计的边界框输出对象检测建议。
+转换到一组规则的框(称为“锚”)。
 """
 def proposal_layer(rpn_cls_prob_reshape, rpn_bbox_pred, im_info, cfg_key, _feat_stride = [16,], anchor_scales = [16,]):
     """

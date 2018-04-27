@@ -1,12 +1,15 @@
 #-*- coding:utf-8 -*-
 import os
+
+import datetime
+
 import ocr
 import time
 import shutil
 import numpy as np
 from PIL import Image
 from glob import glob
-image_files = glob('./test_images/*.*')
+image_files = glob('./test_images/demo4.jpeg')
 
 
 if __name__ == '__main__':

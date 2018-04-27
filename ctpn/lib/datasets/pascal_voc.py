@@ -108,6 +108,8 @@ class pascal_voc(imdb):
         """
         Return the database of selective search regions of interest.
         Ground-truth ROIs are also included.
+        返回选择性搜索区域的数据库。
+        地面真相ROIs也包括在内。
 
         This function loads/saves from/to a cache file to speed up future calls.
         """

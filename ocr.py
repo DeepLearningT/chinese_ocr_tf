@@ -4,6 +4,7 @@ import sys
 import cv2
 from math import *
 import numpy as np
+import time
 from PIL import Image
 
 sys.path.append(os.getcwd() + '/ctpn')
@@ -80,8 +81,13 @@ def model(img, adjust=False):
     @adjust: 是否调整文字识别结果
     """
     cfg_from_file('./ctpn/ctpn/text.yml')
+    t = time.time()
     text_recs, img_framed, img = text_detect(img)
+    print("text_detect cost {:.3f}s".format(time.time() - t))
+
+    t2 = time.time()
     text_recs = sort_box(text_recs)
     result = charRec(img, text_recs, adjust)
+    print("charRec cost {:.3f}s".format(time.time() - t2))
     return result, img_framed
 

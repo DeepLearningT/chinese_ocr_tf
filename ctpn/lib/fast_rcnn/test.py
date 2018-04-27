@@ -1,5 +1,7 @@
 import numpy as np
 import cv2
+import time
+
 from .config import cfg
 from ..utils.blob import im_list_to_blob
 
@@ -47,8 +49,9 @@ def test_ctpn(sess, net, im, boxes=None):
     # forward pass
     if cfg.TEST.HAS_RPN:
         feed_dict = {net.data: blobs['data'], net.im_info: blobs['im_info'], net.keep_prob: 1.0}
-
+    t = time.time()
     rois = sess.run([net.get_output('rois')[0]],feed_dict=feed_dict)
+    print("sess.run cost {:.3f}s".format(time.time() - t))
     rois=rois[0]
 
     scores = rois[:, 0]

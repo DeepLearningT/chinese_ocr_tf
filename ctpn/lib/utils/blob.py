@@ -1,4 +1,7 @@
+# -*- coding:utf-8 -*-
+__author__ = 'tonye'
 """Blob helper functions."""
+
 import numpy as np
 import cv2
 from ..fast_rcnn.config import cfg
@@ -7,6 +10,9 @@ def im_list_to_blob(ims):
     """Convert a list of images into a network input.
 
     Assumes images are already prepared (means subtracted, BGR order, ...).
+    将图像列表转换为网络输入。
+
+    假设图像已经准备好(意味着减去，BGR order，…)。
     """
     max_shape = np.array([im.shape for im in ims]).max(axis=0)
     num_images = len(ims)

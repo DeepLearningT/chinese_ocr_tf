@@ -3,6 +3,8 @@ import sys
 import cv2
 import numpy as np
 import tensorflow as tf
+import time
+
 from lib.utils.timer import Timer
 from lib.fast_rcnn.config import cfg
 from lib.fast_rcnn.test import  test_ctpn
@@ -87,8 +89,12 @@ def draw_boxes(img, boxes, scale):
     return text_recs, img
 
 def text_detect(img):
+    t = time.time()
     scores, boxes, img, scale = ctpn(img)
+    print("ctpn cost {:.3f}s".format(time.time() - t))
+    t2 = time.time()
     text_recs, img_drawed = draw_boxes(img, boxes, scale)
+    print("draw_boxes cost {:.3f}s".format(time.time() - t2))
     return text_recs, img_drawed, img
 
 if __name__ == '__main__':
